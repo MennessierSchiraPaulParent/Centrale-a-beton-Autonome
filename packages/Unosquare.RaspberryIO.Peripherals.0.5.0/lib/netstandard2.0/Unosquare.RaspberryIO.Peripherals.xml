@@ -1,0 +1,2162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Unosquare.RaspberryIO.Peripherals</name>
+    </assembly>
+    <members>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521">
+            <summary>
+            Implements settings for GY-521 accelerometer peripheral.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.#ctor(Unosquare.RaspberryIO.Abstractions.II2CDevice)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521"/> class 
+            with default values for gyroscope (250 °/s) and accelerometer (2g) scale range.
+            </summary>
+            <param name="device">The device.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.#ctor(Unosquare.RaspberryIO.Abstractions.II2CDevice,Unosquare.RaspberryIO.Peripherals.GfsSel,Unosquare.RaspberryIO.Peripherals.AfsSel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521"/> class.
+            </summary>
+            <param name="device">I2C device.</param>
+            <param name="gyroScale">The gyroscope sensitivity factor.</param>
+            <param name="accelScale">The accelerometer sensitivity factor.</param>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.DataAvailable">
+            <summary>
+            Occurs when [data available].
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.Device">
+            <summary>
+            Retrieves the I2C Device.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.GyroscopeScale">
+            <summary>
+            Gets the current gyroscope full scale factor.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.AccelerometerScale">
+            <summary>
+            Gets the current accelerometer full scale factor.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.GyroscopeSensitivity">
+            <summary>
+            Gets the gyroscope sensitivity.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.AccelerometerSensitivity">
+            <summary>
+            Gets the accelerometer sensitivity.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.IsRunning">
+            <summary>
+            Gets a value indicating whether this instance is running.
+            </summary>
+            <value><c>true</c> if this instance is running; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.Start">
+            <summary>
+            Starts the instance.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.Run">
+            <summary>
+            Runs this instance.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.RetrieveSensorData">
+            <summary>
+            Retrieve the data capted by the sensor.
+            </summary>
+            <returns> Data calculated by GY-521 accelerometer. </returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.SetSleepMode(System.Boolean)">
+            <summary>
+            Sets the sleep mode.
+            </summary>
+            <param name="sleep">if set to <c>true</c> puts the sensor into sleep mode.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.StopContinuousReads">
+            <summary>
+            Stops the continuous reads.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.ReadWord(System.Int32)">
+            <summary>
+            Reads the word.
+            </summary>
+            <param name="register">The register.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.ReadWord2C(System.Int32)">
+            <summary>
+            Reads the word for i2C.
+            </summary>
+            <param name="register">The register.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs">
+            <summary>
+            GY521 sensor measurements.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs.#ctor(Unosquare.RaspberryIO.Peripherals.Point3D,Unosquare.RaspberryIO.Peripherals.Point3D,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs"/> class.
+            </summary>
+            <param name="gyro">Gyroscope measurement.</param>
+            <param name="accel">Accelerometer  measurement.</param>
+            <param name="temperature">Temperature measurement.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs.Gyro">
+            <summary>
+            Gyroscope's X factor.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs.Accel">
+            <summary>
+            Acceleration's X factor.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.AccelerometerGY521EventArgs.Temperature">
+            <summary>
+            Temperature measured by the sensor in celsius degrees.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.AfsSel">
+            <summary>
+            Accelerometer full scale range selection.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.AfsSel.Fsr2G">
+            <summary>
+            ±2g
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.AfsSel.Fsr4G">
+            <summary>
+            ±4g
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.AfsSel.Fsr8G">
+            <summary>
+            ±8g
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.AfsSel.Fsr16G">
+            <summary>
+            ±16g
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.GfsSel">
+            <summary>
+            Gyroscope full scale range selection.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.GfsSel.Fsr250">
+            <summary>
+            ±250 °/s
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.GfsSel.Fsr500">
+            <summary>
+            ±500 °/s
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.GfsSel.Fsr1000">
+            <summary>
+            ±1000 °/s
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.GfsSel.Fsr2000">
+            <summary>
+            ±2000 °/s
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Point3D">
+            <summary>
+            3D-space point.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Point3D"/> struct.
+            </summary>
+            <param name="x">The X component.</param>
+            <param name="y">The Y component.</param>
+            <param name="z">The Z component.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.#ctor(Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Point3D"/> struct.
+            </summary>
+            <param name="value">The point to extract X, Y and Z components from.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.Point3D.X">
+            <summary>
+            The X component of the point.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.Point3D.Y">
+            <summary>
+            The Y component of the point.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.Point3D.Z">
+            <summary>
+            The Z component of the point.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.op_Equality(Unosquare.RaspberryIO.Peripherals.Point3D,Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Implements the == operator.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.op_Inequality(Unosquare.RaspberryIO.Peripherals.Point3D,Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Implements the != operator.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.op_Division(Unosquare.RaspberryIO.Peripherals.Point3D,Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Divides the first point by the second.
+            </summary>
+            <param name="left">The first source point.</param>
+            <param name="right">The second source point.</param>
+            <returns>A new point result of the division.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.op_Division(Unosquare.RaspberryIO.Peripherals.Point3D,System.Double)">
+            <summary>
+            Divides the point by the given scalar.
+            </summary>
+            <param name="point">The source point.</param>
+            <param name="scalar">The scalar value.</param>
+            <returns>A new point result of the division.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.Divide(Unosquare.RaspberryIO.Peripherals.Point3D,Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Divides the first point by the second.
+            </summary>
+            <param name="left">The first source point.</param>
+            <param name="right">The second source point.</param>
+            <returns>A new point result of the division.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.Divide(Unosquare.RaspberryIO.Peripherals.Point3D,System.Double)">
+            <summary>
+            Divides the point by the given scalar.
+            </summary>
+            <param name="point">The source point.</param>
+            <param name="scalar">The scalar value.</param>
+            <returns>A new point result of the division.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The object to compare with the current instance.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.Equals(Unosquare.RaspberryIO.Peripherals.Point3D)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.ToString(System.String)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="format">The format.</param>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Point3D.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc />
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.ADS1x15">
+            <summary>
+            Abstract base class for both ADC varients, new the specific varient to ensure it's configured correctly at construction.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.ADS1x15.device">
+            <summary>
+            Register a device on the bus.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.ADS1x15"/> class.
+            </summary>
+            <param name="delay">amount of time to delay between write/read.</param>
+            <param name="shift">bits to shift for sign correction.</param>
+            <param name="address">I2C Address.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.ADS1x15.AdsGaint">
+            <summary>
+            Gain of internal converter.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.ADS1x15.Gain">
+            <summary>
+            Internal gain of hardware converter.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.ReadChannel(System.Byte)">
+            <summary>
+            Gets a single-ended ADC reading from the specified channel.
+            </summary>
+            <param name="channel">the channel to interogate.</param>
+            <returns>unsigned absolute voltage of the ADC channel.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.ReadDifferential01">
+            <summary>
+            Read the voltage difference (+/-) between ADC0 and ADC1.
+            </summary>
+            <returns>signed voltage difference.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.ReadDifferential23">
+            <summary>
+            Read the voltage difference (+/-) between ADC2 and ADC3.
+            </summary>
+            <returns>signed voltage difference.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.StartComparitor(System.Byte,System.Int16)">
+            <summary>
+             Start ADC in comparitor mode.
+            </summary>
+            <param name="channel">the channel to trigger on.</param>
+            <param name="threshold">the triggering value.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.PollComparitorResult">
+            <summary>
+            Fetch results from a thresholded comparitor.
+            </summary>
+            <returns>unsigned result.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.PollComparitorResultSigned">
+            <summary>
+            Fetch results from a thresholded comparitor.
+            </summary>
+            <returns>signed result.</returns>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.ADS1x15.ADS1x15ADDRESS">
+            <summary>
+            I2C ADDRESS/BITS.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.ADS1x15.ADS1015CONVERSIONDELAY">
+            <summary>
+            CONVERSION DELAY (in mS).
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.SignBitCleanup(System.Int32)">
+            <summary>
+            The bit shifting wrecks the sign bit, need to get it back in the right spot.
+            </summary>
+            <param name="value">the value to cleanup.</param>
+            <returns>sign-corrected value.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.WriteRegister(System.Byte,System.UInt16)">
+            <summary>
+            Write to the I2C register, ADS1x15 is byte swapped.
+            </summary>
+            <param name="registery">register address to write to</param>
+            <param name="value">value to set</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1x15.SwapWord(System.UInt16)">
+            <summary>
+            Swap the low and high bytes.
+            </summary>
+            <param name="value">value to swap</param>
+            <returns>16-bit unsigned value with high and low bytes swapped</returns>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.ADS1015">
+            <summary>
+            ADS1015 Device.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1015.#ctor(System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.ADS1015"/> class.
+            </summary>
+            <param name="address">The I2C Address for this device.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.ADS1115">
+            <summary>
+            ADS1115 Device.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.ADS1115.#ctor(System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.ADS1115"/> class.
+            </summary>
+            <param name="address">The I2C Address for this device.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.BitmapBuffer">
+            <summary>
+            Represents a buffer of bytes containing pixels in BGRA byte order
+            loaded from an image that is passed on to the constructor.
+            Data contains all the raw bytes (without scanline left-over bytes)
+            where they can be quickly changed and then a new bitmap
+            can be created from the byte data.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.BytesPerPixel">
+            <summary>
+            A constant representing the number of
+            bytes per pixel in the pixel data. This is
+            always 4 but it is kept here for readability.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.BOffset">
+            <summary>
+            The blue byte offset within a pixel offset. This is 0.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.GOffset">
+            <summary>
+            The green byte offset within a pixel offset.  This is 1.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.ROffset">
+            <summary>
+            The red byte offset within a pixel offset.  This is 2.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.AOffset">
+            <summary>
+            The alpha byte offset within a pixel offset.  This is 3.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.#ctor(System.Drawing.Image)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.BitmapBuffer"/> class.
+            Data will not contain left-over stride bytes.
+            </summary>
+            <param name="sourceImage">The source image.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.Data">
+            <summary>
+            Contains all the bytes of the pixel data
+            Each horizontal scanline is represented by LineLength
+            rather than by LinceStride. The left-over stride bytes
+            are removed.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.ImageWidth">
+            <summary>
+            Gets the width of the image.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.ImageHeight">
+            <summary>
+            Gets the height of the image.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.PixelFormat">
+            <summary>
+            Gets the pixel format. This will always be Format32bppArgb.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.LineStride">
+            <summary>
+            Gets the length in bytes of a line of pixel data.
+            Basically the same as Line Length except Stride might be a little larger as
+            some bitmaps might be DWORD-algned.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.LineLength">
+            <summary>
+            Gets the length in bytes of a line of pixel data.
+            Basically the same as Stride except Stride might be a little larger as
+            some bitmaps might be DWORD-algned.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.GetPixelOffset(System.Int32,System.Int32)">
+            <summary>
+            Gets the index of the first byte in the BGRA pixel data for the given image coordinates.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>Index of the first byte in the BGRA pixel.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            x
+            or
+            y.
+            </exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.BitmapBuffer.ToBitmap">
+            <summary>
+            Converts the pixel data bytes held in the buffer
+            to a 32-bit RGBA bitmap.
+            </summary>
+            <returns>Pixel data for a graphics image and its attribute.</returns>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Button">
+            <summary>
+            Implements a generic button attached to the GPIO.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Button.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin,Unosquare.RaspberryIO.Abstractions.GpioPinResistorPullMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Button"/> class.
+            </summary>
+            <param name="gpioPin">The gpio pin.</param>
+            <param name="pullMode">The input pull mode.</param>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.Button.Pressed">
+            <summary>
+            Occurs when [pressed].
+            </summary> 
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.Button.Released">
+            <summary>
+            Occurs when [released].
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor">
+            <summary>
+            Implements a digital infrared sensor using the HX1838/VS1838 or the TSOP38238 38kHz digital receiver.
+            It registers an interrupt on the pin and fires data events asynchronously to keep CPU usage low.
+            Some primitive ideas taken from https://github.com/adafruit/IR-Commander/blob/master/ircommander.pde
+            and https://github.com/z3t0/Arduino-IRremote/blob/master/IRremote.cpp.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse">
+            <summary>
+            Represents data of an infrared pulse.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse.#ctor(System.Boolean,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse"/> class.
+            </summary>
+            <param name="value">if set to <c>true</c> [value].</param>
+            <param name="durationUsecs">The duration usecs.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse.Value">
+            <summary>
+            Gets the signal value.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse.DurationUsecs">
+            <summary>
+            Gets the duration microseconds.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor" /> class.
+            </summary>
+            <param name="inputPin">The input pin.</param>
+            <param name="isActiveLow">if set to <c>true</c> [is active low].</param>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.InfraredSensor.PulseAvailable">
+            <summary>
+            Occurs when a single sensor pulse is available.
+            </summary>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.InfraredSensor.DataAvailable">
+            <summary>
+            Occurs when a data buffer is available.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReceiverFlushReason">
+            <summary>
+            Enumerates the different reasons why the receiver flushed the buffer.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReceiverFlushReason.Idle">
+            <summary>
+            The idle state
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReceiverFlushReason.Overflow">
+            <summary>
+            The overflow state
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InputPin">
+            <summary>
+            Gets the input pin.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.IsActiveLow">
+            <summary>
+            Gets a value indicating whether the sensor is active low.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.DebugPulses(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse[],System.Int32)">
+            <summary>
+            Creates a string representing all the pulses passed to this method.
+            </summary>
+            <param name="pulses">The pulses.</param>
+            <param name="groupSize">Number of pulse data to output per line.</param>
+            <returns>A string representing the pulses.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReadInterruptDoWork">
+            <summary>
+            Reads the interrupt do work.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.OnInfraredSensorPulseAvailable(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse)">
+            <summary>
+            Called when a single infrared sensor pulse becomes available.
+            </summary>
+            <param name="pulse">The pulse.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.OnInfraredSensorRawDataAvailable(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse[],Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReceiverFlushReason)">
+            <summary>
+            Called when an infrared sensor raw data buffer becomes available.
+            </summary>
+            <param name="pulses">The pulses.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs">
+            <summary>
+            Represents event arguments for when a receiver buffer is ready to be decoded.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs.#ctor(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse[],Unosquare.RaspberryIO.Peripherals.InfraredSensor.ReceiverFlushReason)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs" /> class.
+            </summary>
+            <param name="pulses">The pulses.</param>
+            <param name="flushReason">The state.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs.Pulses">
+            <summary>
+            Gets the array fo IR pulses.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs.FlushReason">
+            <summary>
+            Gets the state of the receiver that triggered the event.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorDataEventArgs.TrainDurationUsecs">
+            <summary>
+            Gets the pulse train duration in microseconds.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs">
+            <summary>
+            Contains the raw sensor data event arguments.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs.#ctor(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs" /> class.
+            </summary>
+            <param name="pulse">The pulse.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs.Value">
+            <summary>
+            Gets the signal value.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredSensorPulseEventArgs.DurationUsecs">
+            <summary>
+            Gets the duration microseconds.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.InfraredSensor.NecDecoder">
+            <summary>
+            Provides decoding Methods for the NEC IR Protocol.
+            Idea taken from here: https://www.sbprojects.net/knowledge/ir/nec.php.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.NecDecoder.DecodePulses(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse[])">
+            <summary>
+            Decodes the IR pulses according to the NEC protocol.
+            If the train of pulses does not match the protocol, then it returns a null byte array.
+            If the train of pulses is a repeat code, then it returns a 4-byte array with all bits set.
+            </summary>
+            <param name="pulses">The pulses.</param>
+            <returns>The decoded bytes.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.InfraredSensor.NecDecoder.IsRepeatCode(Unosquare.RaspberryIO.Peripherals.InfraredSensor.InfraredPulse[])">
+            <summary>
+            Determines whether the set of pulses represent a repeat code.
+            </summary>
+            <param name="pulses">The pulses.</param>
+            <returns>
+              <c>true</c> if the train of pulses represents an NEC repeat code.
+            </returns>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C">
+            <summary>
+            Represents an SPI addressable strip of RGB LEDs
+            Model number APA102C
+            This strip is also known as Adafruit DotStar LED strip (just a new name for an existing item)
+            You can get it here: https://www.adafruit.com/products/2239
+            or here: https://www.aliexpress.com/wholesale?SearchText=APA102C.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C"/> class.
+            </summary>
+            <param name="ledCount">The length of the stip.</param>
+            <param name="spiChannel">The SPI channel.</param>
+            <param name="spiFrequency">The SPI frequency.</param>
+            <param name="reverseRgb">if set to <c>true</c> colors will be sent to the strip as BGR, otherwise as RGB.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.ReverseRgb">
+            <summary>
+            Gets a value indicating whether RGB values are sent as GBR
+            This is typically true.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedCount">
+            <summary>
+            Gets the LED count.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel"/> at the specified index.
+            </summary>
+            <value>
+            The <see cref="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel"/>.
+            </value>
+            <param name="index">The index.</param>
+            <returns>A reference to the strip pixel.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.ClearPixels">
+            <summary>
+            Clears all the pixels. Call the Render method to apply the changes.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.GetPixel(System.Int32)">
+            <summary>
+            Gets the pixel.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>A refrence to the stip pixel.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.SetPixel(System.Int32,System.Single,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Sets the pixel brightness, R, G and B at the given index.
+            And invalid index has no effect.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="brightness">The brightness.</param>
+            <param name="r">The Red.</param>
+            <param name="g">The Green.</param>
+            <param name="b">The Blue.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.SetPixels(Unosquare.RaspberryIO.Peripherals.BitmapBuffer,System.Int32,System.Int32,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Sets a number of pixels from loaded pixel data directly into the frame buffer
+            This is the fastest method to set a number of pixels.
+            Call the Render Method to apply!.
+            </summary>
+            <param name="pixels">The pixel data of a previously loaded bitmap.</param>
+            <param name="sourceOffsetX">The x offset in the bitmap to start copying pixels from.</param>
+            <param name="sourceOffsetY">The row index (y) from which to take the pixel data.</param>
+            <param name="brightness">The brightness from 0.0 to 1.0. The underlying precision is from 0 to 31.</param>
+            <param name="targetOffset">The target offset where to start setting the pixels.</param>
+            <param name="targetLength">The number of pixels to set. 0 or less means the entire LedCount.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">startX
+            or
+            y.</exception>
+            <exception cref="T:System.ArgumentNullException">bitmap.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.Render">
+            <summary>
+            Renders all the pixels in the FrameBuffer.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel">
+            <summary>
+            Represents an LED in a strip of LEDs
+            This class is not meant to be instantiated by the user.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel.#ctor(Unosquare.RaspberryIO.Peripherals.LedStripAPA102C,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel"/> class.
+            </summary>
+            <param name="owner">The owner.</param>
+            <param name="baseAddress">The base address.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel.Brightness">
+            <summary>
+            Gets or sets the brightness, from 0 to 1.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel.R">
+            <summary>
+            The Red Buye.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel.G">
+            <summary>
+            The green.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LedStripAPA102C.LedStripPixel.B">
+            <summary>
+            The blue.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.LogicProbe">
+            <summary>
+            A class representing a logic probe that reads high or low digital values when
+            an edge change is detected. This is not meant for high frequency probing.
+            The maximum fairly reliable probing frequency is at most 10kHz (100us periods).
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.LogicProbe"/> class.
+            </summary>
+            <param name="inputPin">The input pin.</param>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataAvailable">
+            <summary>
+            Occurs when probe data becomes available.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LogicProbe.IsRunning">
+            <summary>
+            Gets a value indicating whether the probe is running.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.Start">
+            <summary>
+            Starts probing.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.Pause">
+            <summary>
+            Pauses probing.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.Stop">
+            <summary>
+            Stops measurement and resets the timer to zero.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.Restart">
+            <summary>
+            Restarts probing at the 0 timestamp.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs">
+            <summary>
+            Event arguments representing probe data.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs.#ctor(System.Int64,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs"/> class.
+            </summary>
+            <param name="timestamp">The timestamp.</param>
+            <param name="value">if set to <c>true</c> [value].</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs.Timestamp">
+            <summary>
+            Gets the detection timestamp in microseconds.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs.Value">
+            <summary>
+            Gets the read value at the given timestamp.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.LogicProbe.ProbeDataEventArgs.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306">
+            <summary>
+            Provides an I2C interface to OLED displays
+            using the SSD1306 driver.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.#ctor(Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306"/> class.
+            </summary>
+            <param name="model">The model.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.#ctor(Unosquare.RaspberryIO.Abstractions.II2CDevice,Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel,Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.VccSourceMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306"/> class.
+            </summary>
+            <param name="device">The device.</param>
+            <param name="model">The model.</param>
+            <param name="vccSource">State of the VCC.</param>
+            <exception cref="T:System.ArgumentException">Invalid display model - model.</exception>
+            <exception cref="T:System.ArgumentNullException">device.</exception>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel">
+            <summary>
+            ENumerates the different OLED display models.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel.Display128X64">
+            <summary>
+            The display 128x64
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel.Display128X32">
+            <summary>
+            The display 128x32 (pioled)
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DisplayModel.Display96X16">
+            <summary>
+            The display 96x16
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.VccSourceMode">
+            <summary>
+            Enumerates the different Power Source modes.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.VccSourceMode.External">
+            <summary>
+            External power supply
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.VccSourceMode.Switching">
+            <summary>
+            Integrated switching capacitor power supply
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Command">
+            <summary>
+            Enumerates the different commands.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Device">
+            <summary>
+            Gets the device.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Width">
+            <summary>
+            Gets the display pixel width.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Height">
+            <summary>
+            Gets the display pixel height.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.VccSource">
+            <summary>
+            Gets the VCC source mode.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Model">
+            <summary>
+            Gets the display model.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Contrast">
+            <summary>
+            Gets or sets the contrast from 0 to 255.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.IsActive">
+            <summary>
+            Gets or sets if the display is turned on.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets or sets the value of the specified pixel coordinate.
+            </summary>
+            <param name="x">The x coordinate.</param>
+            <param name="y">The y coordinate.</param>
+            <returns>The value (true or false).</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Gets the pixel buffer value at the given coordinates.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>If the bit is set or not.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.SetPixel(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets the pixel buffer value at the given coordinates.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="value">if set to <c>true</c> [value].</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.GetTextBitmap(System.String)">
+            <summary>
+            Gets the text bitmap using the default bitmap font.
+            </summary>
+            <param name="text">The text.</param>
+            <returns>A bitmap containing the text using the bitmap font.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DrawText(System.Drawing.Bitmap,System.String[])">
+            <summary>
+            Draws the text lines on an existing bitmap and loads it to the bitmap buffer.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="lines">The lines.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.DrawText(System.Drawing.Bitmap,System.Drawing.Graphics,System.String[])">
+            <summary>
+            Draws the text lines on an existing bitmap and loads it to the bitmap buffer.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="g">The existing graphics context.</param>
+            <param name="lines">The lines.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.ClearPixels">
+            <summary>
+            Clears all the back-buffer pixels.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.LoadBitmap(System.Drawing.Bitmap,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Loads a bitmap into the bit buffer.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="brightnessThreshold">The brightness threshold 0 to 1.</param>
+            <param name="offsetX">The offset x.</param>
+            <param name="offsetY">The offset y.</param>
+            <exception cref="T:System.ArgumentNullException">bitmap.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Render">
+            <summary>
+            Renders tthe contents of the buffer.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Render(System.String[])">
+            <summary>
+            Renders the specified text lines.
+            This is the fastest way to render console text
+            but it does not allow image composition.
+            </summary>
+            <param name="lines">The text lines.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.GetDefaultDevice">
+            <summary>
+            Gets the default I2C device.
+            </summary>
+            <returns>The default I2C device.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Initialize">
+            <summary>
+            Initializes the dipslay according to its model.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.GetBitIndex(System.Int32,System.Int32)">
+            <summary>
+            Gets bitarray index of the bitt buffer based on x and y coordinates.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <returns>The bit index for the given coordinates.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.SendCommand(Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Command,System.Byte)">
+            <summary>
+            Sends the command.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="argument">The argument.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.SendCommand(Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Command,System.Byte,System.Byte)">
+            <summary>
+            Sends the command.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="arg0">The arg0.</param>
+            <param name="arg1">The arg1.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.SendCommand(System.Byte)">
+            <summary>
+            Sends the command.
+            </summary>
+            <param name="command">The command.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.SendCommand(Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Command)">
+            <summary>
+            Sends the command.
+            </summary>
+            <param name="command">The command.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.OledDisplaySsd1306.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522">
+            <summary>
+            Read and write different types of Radio-Frequency IDentification (RFID) cards on your
+            Raspberry Pi using a RC522 based reader connected via the Serial Peripheral Interface (SPI) interface.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command">
+            <summary>
+            Contains constants for well-known commands.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.Idle">
+            <summary>
+            The idle Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.Authenticate">
+            <summary>
+            The authenticate Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.Receive">
+            <summary>
+            The receive Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.Transmit">
+            <summary>
+            The transmit Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.Transcieve">
+            <summary>
+            The transcieve Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.ResetPhase">
+            <summary>
+            The reset phase Command
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command.ComputeCrc">
+            <summary>
+            The compute CRC Command
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register">
+            <summary>
+            Enumerates all 64 registers in the device.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved00">
+            <summary>
+            The reserved00
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CommandReg">
+            <summary>
+            The command reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CommIEnReg">
+            <summary>
+            The comm i en reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.DivlEnReg">
+            <summary>
+            The divl en reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CommIrqReg">
+            <summary>
+            The comm irq reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.DivIrqReg">
+            <summary>
+            The div irq reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.ErrorReg">
+            <summary>
+            The error reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Status1Reg">
+            <summary>
+            The status1 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Status2Reg">
+            <summary>
+            The status2 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.FIFODataReg">
+            <summary>
+            The fifo data reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.FIFOLevelReg">
+            <summary>
+            The fifo level reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.WaterLevelReg">
+            <summary>
+            The water level reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.ControlReg">
+            <summary>
+            The control reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.BitFramingReg">
+            <summary>
+            The bit framing reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CollReg">
+            <summary>
+            The coll reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved01">
+            <summary>
+            The reserved01
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved10">
+            <summary>
+            The reserved10
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.ModeReg">
+            <summary>
+            The mode reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TxModeReg">
+            <summary>
+            The tx mode reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.RxModeReg">
+            <summary>
+            The rx mode reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TxControlReg">
+            <summary>
+            The tx control reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TxAutoReg">
+            <summary>
+            The tx automatic reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TxSelReg">
+            <summary>
+            The tx sel reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.RxSelReg">
+            <summary>
+            The rx sel reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.RxThresholdReg">
+            <summary>
+            The rx threshold reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.DemodReg">
+            <summary>
+            The demod reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved11">
+            <summary>
+            The reserved11
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved12">
+            <summary>
+            The reserved12
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.MifareReg">
+            <summary>
+            The mifare reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved13">
+            <summary>
+            The reserved13
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved14">
+            <summary>
+            The reserved14
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.SerialSpeedReg">
+            <summary>
+            The serial speed reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved20">
+            <summary>
+            The reserved20
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CRCResultRegM">
+            <summary>
+            The CRC result reg m
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CRCResultRegL">
+            <summary>
+            The CRC result reg l
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved21">
+            <summary>
+            The reserved21
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.ModWidthReg">
+            <summary>
+            The mod width reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved22">
+            <summary>
+            The reserved22
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.RFCfgReg">
+            <summary>
+            The rf CFG reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.GsNReg">
+            <summary>
+            The gs n reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.CWGsPReg">
+            <summary>
+            The cw gs p reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.ModGsPReg">
+            <summary>
+            The mod gs p reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TModeReg">
+            <summary>
+            The t mode reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TPrescalerReg">
+            <summary>
+            The t prescaler reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TReloadRegH">
+            <summary>
+            The t reload reg h
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TReloadRegL">
+            <summary>
+            The t reload reg l
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TCounterValueRegH">
+            <summary>
+            The t counter value reg h
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TCounterValueRegL">
+            <summary>
+            The t counter value reg l
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved30">
+            <summary>
+            The reserved30
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestSel1Reg">
+            <summary>
+            The test sel1 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestSel2Reg">
+            <summary>
+            The test sel2 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestPinEnReg">
+            <summary>
+            The test pin en reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestPinValueReg">
+            <summary>
+            The test pin value reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestBusReg">
+            <summary>
+            The test bus reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.AutoTestReg">
+            <summary>
+            The automatic test reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.VersionReg">
+            <summary>
+            The version reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.AnalogTestReg">
+            <summary>
+            The analog test reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestDAC1Reg">
+            <summary>
+            The test da c1 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestDAC2Reg">
+            <summary>
+            The test da c2 reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.TestADCReg">
+            <summary>
+            The test adc reg
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved31">
+            <summary>
+            The reserved31
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved32">
+            <summary>
+            The reserved32
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved33">
+            <summary>
+            The reserved33
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register.Reserved34">
+            <summary>
+            The reserved34
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode">
+            <summary>
+            Enumerates the available request mode codes.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.RequestIdle">
+            <summary>
+            The request idle mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.RequestAll">
+            <summary>
+            The request all mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.AntiCollision">
+            <summary>
+            The anti collision mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.SelectTag">
+            <summary>
+            The select tag mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Authenticate1A">
+            <summary>
+            The authenticate1 a mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Authenticate1B">
+            <summary>
+            The authenticate1 b mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Read">
+            <summary>
+            The read mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Write">
+            <summary>
+            The write mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Decrement">
+            <summary>
+            The decrement mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Increment">
+            <summary>
+            The increment mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Restore">
+            <summary>
+            The restore mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Transfer">
+            <summary>
+            The transfer mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode.Halt">
+            <summary>
+            The halt mode
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.DefaultAuthKey">
+            <summary>
+            The default authentication key.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522"/> class.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.#ctor(Unosquare.RaspberryIO.Abstractions.ISpiChannel,System.Int32,Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522" /> class.
+            </summary>
+            <param name="spiPort">The spi port.</param>
+            <param name="spiFrequency">The spi frequency.</param>
+            <param name="outputPort">The output port.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Reset">
+            <summary>
+            Sends the reset phase command to the RFID Controller.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.TurnAntennaOn">
+            <summary>
+            Turns the RFID antenna on.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.TurnAntennaOff">
+            <summary>
+            Turns the RFID antenna off.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.ReadRegister(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register)">
+            <summary>
+            Reads the register.
+            </summary>
+            <param name="register">The register.</param>
+            <returns>The contents of the register.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.CardSendData(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command,System.Byte[])">
+            <summary>
+            Sends data to the RFID card.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="sendData">The send data.</param>
+            <returns>A standard controller response.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.CardWriteData(System.Byte,System.Byte[])">
+            <summary>
+            Writes the specified data buffer to an RFID card.
+            </summary>
+            <param name="blockAddress">The block address.</param>
+            <param name="writeData">The write data.</param>
+            <returns>The resulting status.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.CardReadData(System.Byte)">
+            <summary>
+            Reads the specified data block from an RFID card.
+            </summary>
+            <param name="blockAddress">The block address.</param>
+            <returns>A standar response.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.SendControllerRequest(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode)">
+            <summary>
+            Sends a request to the RFID controller.
+            </summary>
+            <param name="requestMode">The request mode.</param>
+            <returns>A standard response.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.DetectCard">
+            <summary>
+            Prepares the controller for card reading.
+            Resturns an OK status if a card was detected.
+            </summary>
+            <returns>The status code.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.ReadCardUniqueId">
+            <summary>
+            Reads the card unique identifier.
+            </summary>
+            <returns>A standard response. The UID is in the Data.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.SelectCardUniqueId(System.Byte[])">
+            <summary>
+            Selects the card UID before authentication.
+            Returns 0 for error.
+            </summary>
+            <param name="cardUid">The serial number.</param>
+            <returns>The size of the tag. 0 For error.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.AuthenticateCard1A(System.Byte[],System.Byte)">
+            <summary>
+            Authenticates the previosuly selected card UID in 1A mode with default AuthKey.
+            </summary>
+            <param name="cardUid">The card uid.</param>
+            <param name="blockAddress">The block address.</param>
+            <returns>The status code.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.AuthenticateCard1A(System.Byte[],System.Byte[],System.Byte)">
+            <summary>
+            Authenticates the previosuly selected card UID in 1A mode.
+            </summary>
+            <param name="sectorkey">The sectorkey.</param>
+            <param name="cardUid">The card uid.</param>
+            <param name="blockAddress">The block address.</param>
+            <returns>The status code.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.AuthenticateCard1B(System.Byte[],System.Byte[],System.Byte)">
+            <summary>
+            Authenticates the previosuly selected card UID in 1B mode.
+            </summary>
+            <param name="sectorkey">The sectorkey.</param>
+            <param name="cardUid">The card uid.</param>
+            <param name="blockAddress">The block address.</param>
+            <returns>The status code.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.ClearCardSelection">
+            <summary>
+            Clears the card selection for authentication purposes.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.DumpRegisters(System.Byte[],System.Byte[])">
+            <summary>
+            Reads the authenticated registers.
+            </summary>
+            <param name="authKey">The authentication key.</param>
+            <param name="cardUniqueId">The card unique identifier.</param>
+            <returns>A byte array with the contents of the authenticated registers.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.InitializeComponent">
+            <summary>
+            Initializes the component.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.WriteRegister(System.Byte,System.Byte)">
+            <summary>
+            Writes the register.
+            </summary>
+            <param name="register">The register.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.WriteRegister(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register,System.Byte)">
+            <summary>
+            Writes the register.
+            </summary>
+            <param name="register">The register.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.WriteCommand(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Command)">
+            <summary>
+            Writes the command.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.SetRegisterBits(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register,System.Byte)">
+            <summary>
+            Sets the register bits.
+            </summary>
+            <param name="register">The register.</param>
+            <param name="bitMask">The bit mask.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.ClearRegisterBits(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Register,System.Byte)">
+            <summary>
+            Clears the register bits.
+            </summary>
+            <param name="register">The register.</param>
+            <param name="bitMask">The bit mask.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.CalculateCrc(System.Byte[])">
+            <summary>
+            Calculates the CRC Hash as an array of bytes.
+            Returns a 2-byte array.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>a 2-byte array with the CRC.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Authenticate(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RequestMode,System.Byte,System.Byte[],System.Byte[])">
+            <summary>
+            Authenticates the card using the specified authentication mode.
+            </summary>
+            <param name="authMode">The authentication mode.</param>
+            <param name="blockAddress">The block address.</param>
+            <param name="sectorkey">The sectorkey.</param>
+            <param name="cardUid">The card uid.</param>
+            <returns>A status code.</returns>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse">
+            <summary>
+            Holds the status and data of a controller response.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse.#ctor(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status,System.Byte[],System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse"/> class.
+            </summary>
+            <param name="status">The status.</param>
+            <param name="receivedData">The payload of the received data.</param>
+            <param name="receivedBitCount">The received bit count.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse.#ctor(Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status,Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse"/> class.
+            </summary>
+            <param name="status">The status.</param>
+            <param name="previousResponse">The previous response.</param>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse.Status">
+            <summary>
+            Gets the status.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse.Data">
+            <summary>
+            Gets the data.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.RfidResponse.DataBitLength">
+            <summary>
+            Gets the length of the data.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status">
+            <summary>
+            Enumerates the different statuses.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status.AllOk">
+            <summary>
+            All ok status
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status.NoTagError">
+            <summary>
+            The no tag error status
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.RFIDControllerMfrc522.Status.Error">
+            <summary>
+            The error status
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Dht11">
+            <summary>
+            The DHT11 digital relative humidity and temperature sensor.
+            </summary>
+            <seealso cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht11.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Dht11" /> class.
+            </summary>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <exception cref="T:System.ArgumentException">dataPin When it is invalid.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht11.DecodeHumidity(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht11.DecodeTemperature(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Dht12">
+            <summary>
+            The DHT12 digital relative humidity and temperature sensor.
+            </summary>
+            <seealso cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht12.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Dht12" /> class.
+            </summary>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <exception cref="T:System.ArgumentException">dataPin When it is invalid.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht12.DecodeTemperature(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Dht21">
+            <summary>
+            The DHT21 digital relative humidity and temperature sensor.
+            </summary>
+            <seealso cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht21.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Dht21" /> class.
+            </summary>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <exception cref="T:System.ArgumentException">dataPin When it is invalid.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht21.DecodeHumidity(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht21.DecodeTemperature(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.Dht22">
+            <summary>
+            The DHT22 digital relative humidity and temperature sensor.
+            </summary>
+            <seealso cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.Dht22.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.Dht22" /> class.
+            </summary>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <exception cref="T:System.ArgumentException">dataPin When it is invalid.</exception>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs">
+            <summary>
+            Represents the sensor data that was read.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs"/> class.
+            </summary>
+            <param name="temperatureCelsius">The temperature celsius.</param>
+            <param name="humidityPercentage">The humidity percentage.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs"/> class from being created.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.IsValid">
+            <summary>
+            Returns true if the sensor reading is valid; otherwise, <c>false</c>.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.Temperature">
+            <summary>
+            Gets the temperature in celsius degrees.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.TemperatureFahrenheit">
+            <summary>
+            Gets the temperature in fahrenheit degrees.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtReadEventArgs.HumidityPercentage">
+            <summary>
+            Gets the humidity percentage.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.DhtSensor">
+            <summary>
+            Base class for DHT family digital relative humidity and temperature sensors.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor"/> class.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.DhtSensor" /> class.
+            </summary>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <exception cref="T:System.ArgumentException">dataPin When it is invalid.</exception>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.DhtSensor.OnDataAvailable">
+            <summary>
+            Occurs when data from the sensor becomes available
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtSensor.IsRunning">
+            <summary>
+            Gets a value indicating whether the sensor is running.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtSensor.AllowedPins">
+            <summary>
+            Gets a collection of pins that are allowed to run this sensor.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.DhtSensor.PullDownMicroseconds">
+            <summary>
+            Gets the pull down microseconds for start communication.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Create(Unosquare.RaspberryIO.Peripherals.DhtType,Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Creates a specific DHT sensor class.
+            </summary>
+            <param name="type">The type of DHT sensor to create.</param>
+            <param name="dataPin">The data pin. Must be a GPIO-only pin on the P1 Header of the Pi.</param>
+            <returns>The instance of the specific DHT sensor.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Start">
+            <summary>
+            Starts sensor reading at the min time interval which is 2 seconds.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Start(System.Int32)">
+            <summary>
+            Starts sensor reading.
+            </summary>
+            <param name="period">The time interval between reading invocations, in seconds. The min time interval must be 2 seconds.</param>
+            <exception cref="T:System.InvalidOperationException">Period cannot be less than 2 second.</exception>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Stop">
+            <summary>
+            Stops sensor reading.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.DecodeTemperature(System.Byte[])">
+            <summary>
+            Decodes the temperature.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A value representing the current temperature.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.DecodeHumidity(System.Byte[])">
+            <summary>
+            Decodes the humidity.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A value representing the current humidity.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.PerformContinuousReads(System.Object)">
+            <summary>
+            Performs the continuous reads of the sensor.
+            This method represents the body of the worker.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.RetrieveSensorData">
+            <summary>
+            Retrieves the sensor data.
+            </summary>
+            <returns>The event arguments that will be read from the sensor.</returns>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.DhtSensor.StopContinuousReads">
+            <summary>
+            Aborts the read thread.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.DhtType">
+            <summary>
+            DHT family digital relative humidity and temperature sensors.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.Dht11">
+            <summary>
+            The DHT11 sensor.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.Dht12">
+            <summary>
+            The DHT12 sensor.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.Dht21">
+            <summary>
+            The DHT21 sensor.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.Dht22">
+            <summary>
+            The DHT22 sensor.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.AM2301">
+            <summary>
+            The AM2301 sensor.
+            </summary>
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.DhtType.AM2302">
+            <summary>
+            The AM2302 sensor.
+            </summary>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04">
+            <summary>
+            Ultrasonic sensor HC-SR04.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.NoObstacleDistance">
+            <summary>
+            This value is reported when no obstacle is detected.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.#ctor(Unosquare.RaspberryIO.Abstractions.IGpioPin,Unosquare.RaspberryIO.Abstractions.IGpioPin)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04"/> class.
+            </summary>
+            <param name="triggerPin">The trigger pin.</param>
+            <param name="echoPin">The echo pin.</param>
+            <exception cref="T:System.ArgumentException">When it is provided invalid trigger or echo pins.</exception>
+        </member>
+        <member name="E:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.OnDataAvailable">
+            <summary>
+            Occurs when data from sensor is available.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.IsRunning">
+            <summary>
+            Gets a value indicating whether this instance is running.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.Start">
+            <summary>
+            Starts sensor reading.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.Stop">
+            <summary>
+            Stops sensor reading.
+            </summary>
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Unosquare.RaspberryIO.Peripherals.UltrasonicReadEventArgs">
+            <summary>
+            Represents the sensor data that was read.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.UltrasonicReadEventArgs.IsValid">
+            <summary>
+            Returns true if the reading was valid.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.UltrasonicReadEventArgs.HasObstacles">
+            <summary>
+            Gets a value indicating whether any obstacle was detected.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.UltrasonicReadEventArgs.Distance">
+            <summary>
+            Gets the actual distance to the obstacle in centimeters, or <see cref="F:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.NoObstacleDistance"/> if no obstacle was detected.
+            </summary>
+        </member>
+        <member name="P:Unosquare.RaspberryIO.Peripherals.UltrasonicReadEventArgs.DistanceInch">
+            <summary>
+            Gets the actual distance to the obstacle in inches, or <see cref="F:Unosquare.RaspberryIO.Peripherals.UltrasonicHcsr04.NoObstacleDistance"/> if no obstacle was detected.
+            </summary>
+        </member>
+    </members>
+</doc>
