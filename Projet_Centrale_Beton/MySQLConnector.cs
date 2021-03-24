@@ -133,6 +133,26 @@ namespace Projet_Centrale_Beton
             
             Disconnect();
         }
+
+        public void testConnexion()
+        {
+            Connect();
+
+            statement = "SELECT * FROM utilisateurs";
+            MySqlCommand cmd = new MySqlCommand(statement, db);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                Console.WriteLine(reader[0] + " " + reader[1]);
+            }
+            
+            
+            
+            Disconnect();
+            
+            
+        }
         
         
     }

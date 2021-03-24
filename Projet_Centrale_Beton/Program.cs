@@ -21,20 +21,18 @@ namespace Projet_Centrale_Beton
             
             string id, database, password, ip, saisie;
             int exit = 1;
-            RS232Controller controller = new RS232Controller();
+            RS232Controller controller = new RS232Controller("/dev/ttyUSB0");
             IHM lcd = new IHM();
             
 
-            ip = "10.0.0.111";
-            id = "root";
+            ip = "10.0.0.5";
+            id = "install";
             password = "";
-            database = "centraleabpe";
+            database = "centrale_beton";
             
             MySQLConnector bddConnector = new MySQLConnector(ip, database, id, password);
 
 
-
-            string test = password + id;
 
             while (exit != 0)
             {
@@ -60,7 +58,7 @@ namespace Projet_Centrale_Beton
                         bddConnector.CheckDriverUID(controller.ReadSerialPort());
                         break;
                     case "3":
-                        
+                        bddConnector.testConnexion();
                         
                         break;
                     case "4":
