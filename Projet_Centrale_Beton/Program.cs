@@ -1,14 +1,11 @@
 ﻿using System;
-using System.IO.Ports;
-using System.Linq;
 using System.Threading;
-using Org.BouncyCastle.Asn1.X509;
-using Renci.SshNet;
+using Org.BouncyCastle.Asn1.Cms;
 using Unosquare.RaspberryIO;
 using Unosquare.WiringPi;
 
 
-///TODO Discuter avec Foray de la forme du RaspBerry dans le système, avec un LCD, ou retentez NFC. 
+
 
 namespace Projet_Centrale_Beton
 {
@@ -23,6 +20,7 @@ namespace Projet_Centrale_Beton
             int exit = 1;
             RS232Controller controller = new RS232Controller("/dev/ttyUSB0");
             IHM lcd = new IHM();
+            CentraleController centrale = new CentraleController();
             
 
             ip = "10.0.0.5";
@@ -33,49 +31,31 @@ namespace Projet_Centrale_Beton
             MySQLConnector bddConnector = new MySQLConnector(ip, database, id, password);
 
 
-
             while (exit != 0)
             {
-                Console.WriteLine("1 : Scan code barres");
-                Console.WriteLine("2 : Vérification scan BDD d'un scan");
-                Console.WriteLine("4 : Test d'écriture sur LCD");
-                Console.WriteLine("Voici les ports séries à dispositions :");
-                controller.ListSerialPort();
-                
+                string result = controller.ReadSerialPort();
 
-                saisie = Console.ReadLine();
-                
-
-
-                switch (saisie)
+                if (bddConnector.CheckDriverUID(result))
                 {
-                    case "1":
-                        Console.WriteLine(controller.ReadSerialPort());
-                        break;
-
-                    case "2":
-                        Console.WriteLine("En attente d'un scan");
-                        bddConnector.CheckDriverUID(controller.ReadSerialPort());
-                        break;
-                    case "3":
-                        bddConnector.testConnexion();
-                        
-                        break;
-                    case "4":
-                        
-                        lcd.EcritureTest();
-                        break;
-
-
-                    case "0":
-                        exit = 0;
-                        break;
-
-                    default:
-                        Console.WriteLine("Erreur de saisie");
-                        break;
+                    centrale.FirstStage();
+                    
+                    
+                    
+                    
+                    
                 }
+                
+                
+                
+                
             }
+            
+            
+            
+            
+            
+
+            
         }
     }
 }

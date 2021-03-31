@@ -99,7 +99,7 @@ namespace Projet_Centrale_Beton
         }
 
 
-        public void CheckDriverUID(string id)
+        public bool CheckDriverUID(string id)
         {
             Connect();
 
@@ -110,16 +110,18 @@ namespace Projet_Centrale_Beton
             if (reader.Read())
             {
                 Console.WriteLine("ID Correct");
-                index = reader[0].GetHashCode();
-                table = new[] {reader[0],reader[1],reader[2],reader[3],reader[4],reader[5]};
+                Disconnect();
+                return true;
             }
             else
             {
                 Console.WriteLine("Fake ID");
+                Disconnect();
+                return false;
             }
             
-            TransfertFinishedOrder(table);
-            Disconnect();
+            
+            
         }
 
 

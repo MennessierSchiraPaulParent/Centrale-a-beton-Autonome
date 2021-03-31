@@ -147,7 +147,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="HoneyWellScanner.cs" />
+        <Compile Include="CentraleController.cs" />
         <Compile Include="IHM.cs" />
         <Compile Include="MySQLConnector.cs" />
         <Compile Include="Program.cs" />
