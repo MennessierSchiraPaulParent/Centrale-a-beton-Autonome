@@ -1,4 +1,6 @@
-﻿using Unosquare.RaspberryIO;
+﻿using System.Threading;
+using Unosquare.RaspberryIO;
+using Unosquare.RaspberryIO.Abstractions;
 using Unosquare.WiringPi;
 
 namespace Projet_Centrale_Beton
@@ -14,9 +16,12 @@ namespace Projet_Centrale_Beton
 
         public void FirstStage()
         {
+            var port = Pi.Gpio[BcmPin.Gpio27];
+            port.PinMode = GpioPinDriveMode.Output;
+            port.Write(true);
             
-            
-            
+            Thread.Sleep(100);
+
         }
     }
 }

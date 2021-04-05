@@ -103,7 +103,7 @@ namespace Projet_Centrale_Beton
         {
             Connect();
 
-            statement = "SELECT * FROM encours WHERE UID =" + id;
+            statement = "SELECT * FROM commandesencours WHERE codeBarre =" + id;
             MySqlCommand cmd = new MySqlCommand(statement, db);
             MySqlDataReader reader = cmd.ExecuteReader();
 

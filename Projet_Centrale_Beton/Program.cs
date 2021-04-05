@@ -23,39 +23,29 @@ namespace Projet_Centrale_Beton
             CentraleController centrale = new CentraleController();
             
 
-            ip = "10.0.0.5";
-            id = "install";
+            ip = "10.0.0.111";
+            id = "root";
             password = "";
-            database = "centrale_beton";
+            database = "test";
             
             MySQLConnector bddConnector = new MySQLConnector(ip, database, id, password);
 
 
             while (exit != 0)
             {
+
+                Console.WriteLine("En attente de scan...");
                 string result = controller.ReadSerialPort();
 
                 if (bddConnector.CheckDriverUID(result))
                 {
                     centrale.FirstStage();
-                    
-                    
+                    Console.WriteLine("Préparation de la commande...");
                     
                     
                     
                 }
-                
-                
-                
-                
             }
-            
-            
-            
-            
-            
-
-            
         }
     }
 }

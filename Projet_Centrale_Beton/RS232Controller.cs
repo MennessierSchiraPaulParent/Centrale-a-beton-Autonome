@@ -18,6 +18,14 @@ namespace Projet_Centrale_Beton
         public RS232Controller(string port)
         {
             sp = new SerialPort(port, 9600, Parity.None, 8,StopBits.Two);
+            sp.DataReceived +=SpOnDataReceived;
+        }
+
+        private void SpOnDataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
+            Console.WriteLine(sender.ToString());
+            throw new NotImplementedException();
         }
 
 
