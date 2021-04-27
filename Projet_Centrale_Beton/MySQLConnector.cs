@@ -18,7 +18,6 @@ namespace Projet_Centrale_Beton
         private string database;
         private string user;
         private string password;
-        private JsonTextReader textReader;
         private string statement,statement2;
         private string databaseString;
         private MySqlConnection db;
@@ -28,7 +27,7 @@ namespace Projet_Centrale_Beton
 
         /// <summary>
         /// Création de l'objet MySQLConnector. Cet objet permet, au travers de ces méthodes, de se connecter à la BDD
-        /// uniquement en MySQL (uniquement en local pour le moment WIP).
+        /// uniquement en MySQL. Connexion sans fichier de paramétrages (uniquement en local pour le moment WIP).
         /// </summary>
         /// <param name="ipServer"></param>
         /// <param name="database"></param>
@@ -44,9 +43,16 @@ namespace Projet_Centrale_Beton
                              database;
         }
 
-        public MySQLConnector(string databaseString)
+        
+        /// <summary>
+        /// Constructeur récupérant le fichier de configuration JSON formaté afin de créer cet objet.
+        /// </summary>
+        /// <param name="configSql"></param>
+        public MySQLConnector(JsonConfigSQL configSql)
         {
-            this.databaseString = databaseString;
+            databaseString = "Server=" + configSql.adresseIp + ";User ID=" + configSql.login + ";Password=" + configSql.password + ";Database=" +
+                             configSql.databaseName;
+            
         }
 
 
@@ -83,7 +89,7 @@ namespace Projet_Centrale_Beton
             Connect();
 
             Console.WriteLine("Première statement test :");
-            statement = "SELECT * FROM commandes";
+            statement = "SELECT * FROM chauffeurs";
             MySqlCommand cmd = new MySqlCommand(statement, db);
             MySqlDataReader reader = cmd.ExecuteReader();
             
@@ -134,16 +140,7 @@ namespace Projet_Centrale_Beton
         /// Cette méthode permet de déplacer une commande "en cours" vers une table "archive" dans la bdd
         /// </summary>
         /// <param name="table"></param>
-        private void TransfertFinishedOrder(object[] table)
-        {
-            Connect();
-
-            statement2 = "INSERT INTO conclus(UID,Nom,Prenom,Montant) VALUES ('" + table[2].ToString() + "','" + table[3].ToString() + "','" + table[4].ToString() + "','" + table[5].ToString() + "')";
-            MySqlCommand cmd = new MySqlCommand(statement2, db);
-            cmd.ExecuteNonQuery();
-            
-            Disconnect();
-        }
+        
 
         
 
