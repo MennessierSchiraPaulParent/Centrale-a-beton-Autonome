@@ -1,13 +1,12 @@
-﻿/// TODO Discuter avec Benjamin de la forme de la BDD
-/// TODO Préparer la forme en fonction des rows de la BDD
-
-
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Net;
 using System.Data;
+using System.IO;
 using Google.Protobuf;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using Ubiety.Dns.Core;
 
 
@@ -19,6 +18,7 @@ namespace Projet_Centrale_Beton
         private string database;
         private string user;
         private string password;
+        private JsonTextReader textReader;
         private string statement,statement2;
         private string databaseString;
         private MySqlConnection db;
@@ -44,8 +44,13 @@ namespace Projet_Centrale_Beton
                              database;
         }
 
-        public MySQLConnector()
+        public MySQLConnector(object listParameters)
         {
+            var result = listParameters.ToString();
+
+            this.textReader = new JsonTextReader(new StringReader(listParameters.ToString()));
+
+
         }
 
 
@@ -99,6 +104,11 @@ namespace Projet_Centrale_Beton
         }
 
 
+        /// <summary>
+        /// Vérifie dans la base de données le code barre, s'il existe, alors = true, sinon = false
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool CheckDriverUID(string id)
         {
             Connect();
@@ -124,7 +134,10 @@ namespace Projet_Centrale_Beton
             
         }
 
-
+        /// <summary>
+        /// Cette méthode permet de déplacer une commande "en cours" vers une table "archive" dans la bdd
+        /// </summary>
+        /// <param name="table"></param>
         private void TransfertFinishedOrder(object[] table)
         {
             Connect();
@@ -136,25 +149,15 @@ namespace Projet_Centrale_Beton
             Disconnect();
         }
 
-        public void testConnexion()
+        public void ReadConfigFile()
         {
-            Connect();
-
-            statement = "SELECT * FROM utilisateurs";
-            MySqlCommand cmd = new MySqlCommand(statement, db);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                Console.WriteLine(reader[0] + " " + reader[1]);
-            }
-            
-            
-            
-            Disconnect();
+            Console.WriteLine("position : " + textReader.LineNumber + textReader.LinePosition);
+            Console.WriteLine(textReader.ReadAsString());
             
             
         }
+
+        
         
         
     }

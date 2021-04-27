@@ -103,3 +103,5 @@ C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Pr
 C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Projet_Centrale_Beton\bin\Debug\Phidget22.NET.dll
 C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Projet_Centrale_Beton\bin\Debug\Phidget22.NET.pdb
 C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Projet_Centrale_Beton\bin\Debug\Phidget22.NET.xml
+C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Projet_Centrale_Beton\bin\Debug\Newtonsoft.Json.dll
+C:\Users\theop\OneDrive\BTS2\SNIR\Projet_centrale_beton\Projet_Centrale_Beton\Projet_Centrale_Beton\bin\Debug\Newtonsoft.Json.xml

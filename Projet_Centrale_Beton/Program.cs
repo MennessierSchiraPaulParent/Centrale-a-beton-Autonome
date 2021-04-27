@@ -14,15 +14,21 @@ namespace Projet_Centrale_Beton
         public static void Main(string[] args)
         {
             
-            Pi.Init<BootstrapWiringPi>();
+            //Pi.Init<BootstrapWiringPi>();
             
             string id, database, password, ip, saisie;
             int exit = 1;
-            RS232Controller controller = new RS232Controller("/dev/ttyUSB0");
-            IHM lcd = new IHM();
-            CentraleController centrale = new CentraleController();
+            //RS232Controller controller = new RS232Controller("/dev/ttyUSB1");
+            //IHM lcd = new IHM();
+            //CentraleController centrale = new CentraleController();
+
+
+            JsonConfigSQL config = new JsonConfigSQL();
+            MySQLConnector connector = new MySQLConnector(config.ReadJsonParameters());
+            connector.ReadConfigFile();
             
 
+            /*/////////////
             ip = "10.0.0.111";
             id = "root";
             password = "";
@@ -30,7 +36,17 @@ namespace Projet_Centrale_Beton
             
             MySQLConnector bddConnector = new MySQLConnector(ip, database, id, password);
 
+            Thread.Sleep(Timeout.Infinite);
+            
+            
+            
+            */ ////////////
 
+
+
+
+
+            /*
             while (exit != 0)
             {
 
@@ -45,7 +61,14 @@ namespace Projet_Centrale_Beton
                     
                     
                 }
+                
+                
+                
             }
+            */
+
         }
+
+        
     }
 }

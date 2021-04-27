@@ -59,6 +59,10 @@
           <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
           <Private>True</Private>
         </Reference>
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="OptimizedDataReader, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\packages\OptimizedDataReader.1.1.0\lib\net46\OptimizedDataReader.dll</HintPath>
           <Private>True</Private>
@@ -149,6 +153,7 @@
     <ItemGroup>
         <Compile Include="CentraleController.cs" />
         <Compile Include="IHM.cs" />
+        <Compile Include="JsonConfigSQL.cs" />
         <Compile Include="MySQLConnector.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="RS232Controller.cs" />

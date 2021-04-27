@@ -10,6 +10,7 @@ namespace Projet_Centrale_Beton
         public CentraleController()
         {
             Pi.Init<BootstrapWiringPi>();
+            IHM ihm = new IHM();
 
         }
 
@@ -17,6 +18,28 @@ namespace Projet_Centrale_Beton
         public void FirstStage()
         {
             var port = Pi.Gpio[BcmPin.Gpio27];
+            port.PinMode = GpioPinDriveMode.Output;
+            port.Write(true);
+            
+            Thread.Sleep(100);
+
+        }
+
+        public void SecondStage()
+        {
+
+            var port = Pi.Gpio[BcmPin.Gpio29];
+            port.PinMode = GpioPinDriveMode.Output;
+            port.Write(true);
+            
+            Thread.Sleep(100);
+
+        }
+
+        public void ThirdStage()
+        {
+
+            var port = Pi.Gpio[BcmPin.Gpio31];
             port.PinMode = GpioPinDriveMode.Output;
             port.Write(true);
             

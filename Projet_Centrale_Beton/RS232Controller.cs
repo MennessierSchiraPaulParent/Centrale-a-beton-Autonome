@@ -9,23 +9,35 @@ namespace Projet_Centrale_Beton
     public class RS232Controller
     {
         private static SerialPort sp;
+        private static MySQLConnector bddConnector;
+        
 
 
         public RS232Controller()
         {
         }
+        
+        
+        
+        //TODO Vérifier l'évènement DataReceived pour faire la liaison avec la BDD
 
         public RS232Controller(string port)
         {
             sp = new SerialPort(port, 9600, Parity.None, 8,StopBits.Two);
             sp.DataReceived +=SpOnDataReceived;
+            MySQLConnector bddConnector = new MySQLConnector("10.0.0.111", "test", "root", "");
+            OpenConnector();
         }
 
         private void SpOnDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
-            Console.WriteLine(sender.ToString());
-            throw new NotImplementedException();
+            SerialPort sp2 = (SerialPort) sender;
+            string data = sp2.ReadExisting();
+            Console.WriteLine(data);
+
+            //bddConnector.CheckDriverUID(sender.ToString());
+
         }
 
 
