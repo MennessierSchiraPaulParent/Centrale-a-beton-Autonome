@@ -11,31 +11,20 @@ namespace Projet_Centrale_Beton
 {
     public class JsonConfigSQL
     {
-        private string ip;
-        private string login;
-
-        private string parametersString;
+        public string adresseIp;
+        public string login;
+        public string password;
+        public string databaseName;
         
-
-
-        public string ReadJsonParameters()
+        internal void Default()
         {
-            var serializer = new JsonSerializer();
+            adresseIp = "192.168.1.1";
+            login = "test";
+            password = "";
+            databaseName = "test";
 
-            using (var sr = new StreamReader(@"c:\temp\sqltest.json"))
-            using (var reader = new JsonTextReader(sr))
-            {
-                
-                JObject rss = JObject.Parse(reader.ReadAsString());
-
-                parametersString.Insert(0,(string) rss["adresseIp"]);
-                Console.WriteLine((string)rss["adresseIp"]);
-                
-                
-                
-                return parametersString;
-            }
         }
-        
+
+
     }
 }
