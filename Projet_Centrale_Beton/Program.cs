@@ -25,7 +25,7 @@ namespace Projet_Centrale_Beton
 
             JsonConfigSQL config = new JsonConfigSQL();
             MySQLConnector connector = new MySQLConnector(config.ReadJsonParameters());
-            connector.ReadConfigFile();
+            
             
 
             /*/////////////

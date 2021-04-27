@@ -44,13 +44,9 @@ namespace Projet_Centrale_Beton
                              database;
         }
 
-        public MySQLConnector(object listParameters)
+        public MySQLConnector(string databaseString)
         {
-            var result = listParameters.ToString();
-
-            this.textReader = new JsonTextReader(new StringReader(listParameters.ToString()));
-
-
+            this.databaseString = databaseString;
         }
 
 
@@ -149,13 +145,7 @@ namespace Projet_Centrale_Beton
             Disconnect();
         }
 
-        public void ReadConfigFile()
-        {
-            Console.WriteLine("position : " + textReader.LineNumber + textReader.LinePosition);
-            Console.WriteLine(textReader.ReadAsString());
-            
-            
-        }
+        
 
         
         
