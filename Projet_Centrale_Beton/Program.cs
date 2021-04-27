@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using Org.BouncyCastle.Asn1.Cms;
 using Unosquare.RaspberryIO;
@@ -14,39 +15,32 @@ namespace Projet_Centrale_Beton
         public static void Main(string[] args)
         {
             
-            //Pi.Init<BootstrapWiringPi>();
+            Pi.Init<BootstrapWiringPi>();
             
             string id, database, password, ip, saisie;
+            string path = @"c:\temp\sqltest.json";
+            string JsonContent;
             int exit = 1;
-            //RS232Controller controller = new RS232Controller("/dev/ttyUSB1");
-            //IHM lcd = new IHM();
-            //CentraleController centrale = new CentraleController();
+            RS232Controller controller = new RS232Controller("/dev/ttyUSB1");
+            IHM lcd = new IHM();
+            CentraleController centrale = new CentraleController();
 
 
             JsonConfigSQL config = new JsonConfigSQL();
-            MySQLConnector connector = new MySQLConnector(config.ReadJsonParameters());
+            if (File.Exists(path))
+            {
+                JsonContent = File.ReadAllText(path);
+                config = Newtonsoft.Json.JsonConvert.DeserializeObject<JsonConfigSQL>(JsonContent);
+            }
+            else
+            {
+                config.Default();
+            }
             
+            MySQLConnector bddConnector = new MySQLConnector(config);
             
 
-            /*/////////////
-            ip = "10.0.0.111";
-            id = "root";
-            password = "";
-            database = "test";
             
-            MySQLConnector bddConnector = new MySQLConnector(ip, database, id, password);
-
-            Thread.Sleep(Timeout.Infinite);
-            
-            
-            
-            */ ////////////
-
-
-
-
-
-            /*
             while (exit != 0)
             {
 
@@ -57,15 +51,10 @@ namespace Projet_Centrale_Beton
                 {
                     centrale.FirstStage();
                     Console.WriteLine("Préparation de la commande...");
-                    
-                    
-                    
                 }
-                
-                
-                
+            
             }
-            */
+            
 
         }
 
