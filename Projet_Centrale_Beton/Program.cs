@@ -17,8 +17,7 @@ namespace Projet_Centrale_Beton
             
             Pi.Init<BootstrapWiringPi>();
             
-            string id, database, password, ip, saisie;
-            string path = @"c:\temp\sqltest.json";
+            string path = "sqltest.json";
             string JsonContent;
             int exit = 1;
             RS232Controller controller = new RS232Controller("/dev/ttyUSB1");
@@ -40,7 +39,6 @@ namespace Projet_Centrale_Beton
             MySQLConnector bddConnector = new MySQLConnector(config);
             
 
-            
             while (exit != 0)
             {
 
