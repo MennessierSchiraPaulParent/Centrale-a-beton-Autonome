@@ -18,10 +18,10 @@ namespace Projet_Centrale_Beton
         
         internal void Default()
         {
-            adresseIp = "192.168.1.1";
-            login = "test";
+            adresseIp = "localhost";
+            login = "root";
             password = "";
-            databaseName = "test";
+            databaseName = "centrale";
 
         }
 
