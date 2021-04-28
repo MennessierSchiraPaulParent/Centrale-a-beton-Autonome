@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Net;
@@ -22,6 +23,7 @@ namespace Projet_Centrale_Beton
         private string databaseString;
         private MySqlConnection db;
         private int index;
+        private int nombre;
         private object[] table;
 
 
@@ -115,7 +117,7 @@ namespace Projet_Centrale_Beton
         {
             Connect();
 
-            statement = "SELECT * FROM commandesencours WHERE codeBarre =" + id;
+            statement = "SELECT * FROM commandesencours WHERE IdCommande =" + id;
             MySqlCommand cmd = new MySqlCommand(statement, db);
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -136,10 +138,42 @@ namespace Projet_Centrale_Beton
             
         }
 
-        /// <summary>
-        /// Cette méthode permet de déplacer une commande "en cours" vers une table "archive" dans la bdd
-        /// </summary>
-        /// <param name="table"></param>
+        public void SwitchTables(string id)
+        {
+            Connect();
+            
+            statement = "SELECT * FROM commandesencours WHERE IdCommande =" + id;
+            MySqlCommand cmd = new MySqlCommand(statement, db);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            ArrayList list = new ArrayList();
+
+            if (reader.Read())
+            {
+                nombre = reader.FieldCount;
+                for (int i = 0; i < nombre; i++)
+                {
+                   list.Insert(i,reader[i]); 
+                }
+                
+            }
+            reader.Close();
+
+            statement = "DELETE FROM commandesencours WHERE IdCommande = " + id;
+            cmd = new MySqlCommand(statement, db);
+            cmd.ExecuteNonQuery();
+            
+            reader.Close();
+            
+            statement2 = "INSERT INTO historiquecommandes VALUES (" + list[0] + ", "+ list[1] + ", " + list[2] + ")";
+            cmd = new MySqlCommand(statement2, db);
+            cmd.ExecuteNonQuery();
+            
+            Disconnect();
+            
+            
+        }
+        
+        
         
 
         
