@@ -168,6 +168,8 @@ namespace Projet_Centrale_Beton
             cmd = new MySqlCommand(statement2, db);
             cmd.ExecuteNonQuery();
             
+            reader.Close();
+            
             Disconnect();
             
             
