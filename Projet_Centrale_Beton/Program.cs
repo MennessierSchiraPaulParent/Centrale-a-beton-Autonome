@@ -5,9 +5,6 @@ using Org.BouncyCastle.Asn1.Cms;
 using Unosquare.RaspberryIO;
 using Unosquare.WiringPi;
 
-
-
-
 namespace Projet_Centrale_Beton
 {
     internal class Program
@@ -20,16 +17,16 @@ namespace Projet_Centrale_Beton
             string path = "sqltest.json";
             string JsonContent;
             int exit = 1;
-            RS232Controller controller = new RS232Controller("/dev/ttyUSB1");
-            IHM lcd = new IHM();
+            
+            
             CentraleController centrale = new CentraleController();
 
 
-            JsonConfigSQL config = new JsonConfigSQL();
+            JsonConfig config = new JsonConfig();
             if (File.Exists(path))
             {
                 JsonContent = File.ReadAllText(path);
-                config = Newtonsoft.Json.JsonConvert.DeserializeObject<JsonConfigSQL>(JsonContent);
+                config = Newtonsoft.Json.JsonConvert.DeserializeObject<JsonConfig>(JsonContent);
             }
             else
             {
@@ -37,25 +34,23 @@ namespace Projet_Centrale_Beton
             }
             
             MySQLConnector bddConnector = new MySQLConnector(config);
+            RS232Controller controller = new RS232Controller(config.sp_scanner);
+            IHM lcd = new IHM(config.sp_ihm);
             
-
+            
             while (exit != 0)
             {
 
                 Console.WriteLine("En attente de scan...");
                 string result = controller.ReadSerialPort();
-
+                
                 if (bddConnector.CheckDriverUID(result))
                 {
-                    centrale.FirstStage();
                     Console.WriteLine("Préparation de la commande...");
+                    centrale.FirstStage();
                 }
             
             }
-            
-
         }
-
-        
     }
 }
