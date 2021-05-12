@@ -50,7 +50,7 @@ namespace Projet_Centrale_Beton
         /// Constructeur récupérant le fichier de configuration JSON formaté afin de créer cet objet.
         /// </summary>
         /// <param name="configSql"></param>
-        public MySQLConnector(JsonConfigSQL configSql)
+        public MySQLConnector(JsonConfig configSql)
         {
             databaseString = "Server=" + configSql.adresseIp + ";User ID=" + configSql.login + ";Password=" + configSql.password + ";Database=" +
                              configSql.databaseName;
@@ -117,7 +117,7 @@ namespace Projet_Centrale_Beton
         {
             Connect();
 
-            statement = "SELECT * FROM commandesencours WHERE IdCommande =" + id;
+            statement = "SELECT * FROM commandesencours WHERE CodeBarre =" + id;
             MySqlCommand cmd = new MySqlCommand(statement, db);
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -138,6 +138,11 @@ namespace Projet_Centrale_Beton
             
         }
 
+        /// <summary>
+        /// Méthode permettant de transférer de la table "commandes en cours" à la table
+        /// "historiques de commandes"
+        /// </summary>
+        /// <param name="id"></param>
         public void SwitchTables(string id)
         {
             Connect();
@@ -154,7 +159,6 @@ namespace Projet_Centrale_Beton
                 {
                    list.Insert(i,reader[i]); 
                 }
-                
             }
             reader.Close();
 
