@@ -17,7 +17,7 @@ namespace Projet_Centrale_Beton
 
         public void FirstStage()
         {
-            var port = Pi.Gpio[BcmPin.Gpio27];
+            var port = Pi.Gpio[BcmPin.Gpio16];
             port.PinMode = GpioPinDriveMode.Output;
             port.Write(true);
             
