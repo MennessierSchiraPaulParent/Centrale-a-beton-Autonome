@@ -22,6 +22,8 @@ namespace Projet_Centrale_Beton
             CentraleController centrale = new CentraleController();
 
 
+            //Désérialisation JSON
+
             JsonConfig config = new JsonConfig();
             if (File.Exists(path))
             {
@@ -37,7 +39,8 @@ namespace Projet_Centrale_Beton
             RS232Controller controller = new RS232Controller(config.sp_scanner);
             IHM lcd = new IHM(config.sp_ihm);
             
-            
+            //Début programme de scan
+
             while (exit != 0)
             {
 
