@@ -11,8 +11,9 @@ namespace Projet_Centrale_Beton
     public class IHM
     {
         private static SerialPort sp;
-        private static byte [] debutEcriture;
-        private static byte [] finEcriture;
+        private readonly byte [] debutEcriture = {0xA2};
+        private readonly byte [] finEcriture = {0x00};
+        private readonly byte[] clear = {0xA3, 0x01};
         
 
         public IHM()
@@ -22,46 +23,76 @@ namespace Projet_Centrale_Beton
 
         public IHM(string port)
         {
-            sp = new SerialPort(port, 9600, Parity.None, 8,StopBits.Two);
+            sp = new SerialPort(port, 19200, Parity.None, 8,StopBits.Two);
         }
 
         public IHM(JsonConfig config)
         {
-            sp = new SerialPort(config.sp_ihm, 9600, Parity.None, 8,StopBits.Two);
+            sp = new SerialPort(config.sp_ihm, 19200, Parity.None, 8,StopBits.Two);
 
+        }
+
+
+        /// <summary>
+        /// Premier test d'écriture sur le LCD en Liaison série
+        /// </summary>
+        private void EcritureTest()
+        {
+            OpenConnector();
+
+            
+
+            string tests = "bonjour a vous";
+
+            byte[] test = Encoding.UTF8.GetBytes(tests);
+            
+            sp.Write(clear,0,clear.Length);
+            
+
+            sp.Write(debutEcriture,0,1);
+            sp.Write(test,0,test.Length);
+            sp.Write(finEcriture,0,1);
+
+            CloseConnector();
+            
+        }
+
+        /// <summary>
+        /// Méthode permettant l'écriture de l'attente de scan sur l'afficheur LCD
+        /// </summary>
+        public void WriteWaitScan()
+        {
+            OpenConnector();
+            
+            string saisie = "En attente de scan...";
+            byte[] envoie = Encoding.UTF8.GetBytes(saisie);
+            
+            sp.Write(clear,0,clear.Length);
+            sp.Write(debutEcriture,0,1);
+            sp.Write(envoie,0,envoie.Length);
+            sp.Write(finEcriture,0,1);
+
+            CloseConnector();
         }
 
         
         /// <summary>
-        /// Premier test d'écriture sur le LCD en Liaison série
+        /// Méthode permettant la saisie de l'état de la commande,
+        /// avec un string en paramètre qui sera écris sur l'afficheur
         /// </summary>
-        public void EcritureTest()
+        /// <param name="saisie"></param>
+        public void WriteStateScan(string saisie)
         {
             OpenConnector();
 
-            debutEcriture = new  byte[0xA2];
-            finEcriture = new byte[0x00];
-            string tests = "test ecriture";
+            byte[] envoie = Encoding.UTF8.GetBytes(saisie);
+            
+            sp.Write(clear,0,clear.Length);
+            sp.Write(debutEcriture,0,1);
+            sp.Write(envoie,0,envoie.Length);
+            sp.Write(finEcriture,0,1);
 
-            byte[] test = Encoding.UTF8.GetBytes(tests);
-            
-
-            sp.Write(debutEcriture,0,0);
-            sp.Write(Encoding.UTF8.GetBytes(tests),0,0);
-            sp.Write(finEcriture,0,0);
-            
-
-            for (int i = 0; i < test.Length; i++)
-            {
-                /// Voir avec foray pour le code d'écriture
-            }
-            
-            //sp.DiscardInBuffer();
-            //sp.WriteLine("0xA0");
-            //sp.WriteLine("test écriture");
-            
             CloseConnector();
-            
         }
 
         /// <summary>
