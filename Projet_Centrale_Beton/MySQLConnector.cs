@@ -86,7 +86,7 @@ namespace Projet_Centrale_Beton
             db.Close();
         }
 
-        public void PremierTest()
+        private void PremierTest()
         {
             Connect();
 
@@ -175,17 +175,7 @@ namespace Projet_Centrale_Beton
             reader.Close();
             
             Disconnect();
-            
-            
+         
         }
-        
-        
-        
-
-        
-
-        
-        
-        
     }
 }
