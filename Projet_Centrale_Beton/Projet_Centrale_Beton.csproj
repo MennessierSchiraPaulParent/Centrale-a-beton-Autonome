@@ -151,12 +151,12 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="CentraleController.cs" />
-        <Compile Include="IHM.cs" />
-        <Compile Include="JsonConfig.cs" />
-        <Compile Include="MySQLConnector.cs" />
-        <Compile Include="Program.cs" />
-        <Compile Include="RS232Controller.cs" />
+        <Compile Include="Class\CentraleController.cs" />
+        <Compile Include="Class\IHM.cs" />
+        <Compile Include="Class\JsonConfig.cs" />
+        <Compile Include="Class\MySQLConnector.cs" />
+        <Compile Include="Class\Program.cs" />
+        <Compile Include="Class\RS232Controller.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

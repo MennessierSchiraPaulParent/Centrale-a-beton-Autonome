@@ -61,6 +61,7 @@ namespace Projet_Centrale_Beton
                     FirstStage();
                     Thread.Sleep(1000);
                     Console.WriteLine("Debut déplacement commande");
+                    Thread.Sleep(1000);
                     FinishedOrder();
                 }
                 else
@@ -68,8 +69,6 @@ namespace Projet_Centrale_Beton
                     lcd.WriteWaitScan();
                 }
             }
-
-
 
         }
 
