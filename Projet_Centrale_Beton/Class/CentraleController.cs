@@ -26,8 +26,6 @@ namespace Projet_Centrale_Beton
             string path = "sqltest.json";
             string JsonContent;
 
-            CentraleController centrale = new CentraleController();
-            
             //Désérialisation JSON
 
             JsonConfig config = new JsonConfig();
@@ -47,9 +45,8 @@ namespace Projet_Centrale_Beton
             controller = new RS232Controller(config.sp_scanner);
             lcd = new IHM(config.sp_ihm);
             
-            int exit = 1;
 
-            if(exit != 0)
+            while(true)
             {
                 lcd.WriteWaitScan();
                 Console.WriteLine("attente de scan");
@@ -58,14 +55,15 @@ namespace Projet_Centrale_Beton
                 if (bddConnector.CheckDriverUID(result))
                 {
                     lcd.WriteStateScan("Production de la commande");
-                    FirstStage();
-                    Thread.Sleep(1000);
+                    //FirstStage();
+                    //Thread.Sleep(10000); 
                     Console.WriteLine("Debut déplacement commande");
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(10000);
                     FinishedOrder();
                 }
                 else
                 {
+                    Console.WriteLine("non compatible");
                     lcd.WriteWaitScan();
                 }
             }
@@ -113,7 +111,7 @@ namespace Projet_Centrale_Beton
         {
             lcd.WriteStateScan("Fin de la commande");
             bddConnector.SwitchTables(result);
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             
         }
     }

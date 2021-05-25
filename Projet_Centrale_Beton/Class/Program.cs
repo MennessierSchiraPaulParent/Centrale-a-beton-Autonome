@@ -13,7 +13,7 @@ namespace Projet_Centrale_Beton
         {
             
             Pi.Init<BootstrapWiringPi>();
-
+            
             CentraleController centrale = new CentraleController();
             centrale.Run();
             
