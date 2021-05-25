@@ -135,7 +135,6 @@ namespace Projet_Centrale_Beton
             }
             
             
-            
         }
 
         /// <summary>
@@ -161,19 +160,17 @@ namespace Projet_Centrale_Beton
                 }
             }
             reader.Close();
+            
+            statement2 = "INSERT INTO historiquecommandes SELECT * FROM commandesencours WHERE IdCommande =" + id;
+            cmd = new MySqlCommand(statement2, db);
+            cmd.ExecuteNonQuery();
+            reader.Close();
 
             statement = "DELETE FROM commandesencours WHERE IdCommande = " + id;
             cmd = new MySqlCommand(statement, db);
             cmd.ExecuteNonQuery();
-            
             reader.Close();
-            
-            statement2 = "INSERT INTO historiquecommandes VALUES (" + list[0] + ", "+ list[1] + ", " + list[2] + ")";
-            cmd = new MySqlCommand(statement2, db);
-            cmd.ExecuteNonQuery();
-            
-            reader.Close();
-            
+
             Disconnect();
          
         }
