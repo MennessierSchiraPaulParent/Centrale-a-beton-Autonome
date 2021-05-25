@@ -145,31 +145,11 @@ namespace Projet_Centrale_Beton
         public void SwitchTables(string id)
         {
             Connect();
-            
-            statement = "SELECT * FROM commandesencours WHERE IdCommande =" + id;
-            MySqlCommand cmd = new MySqlCommand(statement, db);
-            MySqlDataReader reader = cmd.ExecuteReader();
-            ArrayList list = new ArrayList();
 
-            if (reader.Read())
-            {
-                nombre = reader.FieldCount;
-                for (int i = 0; i < nombre; i++)
-                {
-                   list.Insert(i,reader[i]); 
-                }
-            }
-            reader.Close();
-            
-            statement2 = "INSERT INTO historiquecommandes SELECT * FROM commandesencours WHERE IdCommande =" + id;
-            cmd = new MySqlCommand(statement2, db);
+            statement2 =
+                $"INSERT INTO historiquecommandes SELECT * FROM commandesencours WHERE CodeBarre ={id};DELETE FROM commandesencours WHERE CodeBarre = {id}";
+            MySqlCommand cmd = new MySqlCommand(statement2, db);
             cmd.ExecuteNonQuery();
-            reader.Close();
-
-            statement = "DELETE FROM commandesencours WHERE IdCommande = " + id;
-            cmd = new MySqlCommand(statement, db);
-            cmd.ExecuteNonQuery();
-            reader.Close();
 
             Disconnect();
          
