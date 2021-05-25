@@ -14,6 +14,7 @@ namespace Projet_Centrale_Beton
         private RS232Controller controller;
         private IHM lcd;
         private MySQLConnector bddConnector;
+        private string test = "644824914886";
         
 
         public CentraleController()
@@ -25,6 +26,7 @@ namespace Projet_Centrale_Beton
         {
             string path = "sqltest.json";
             string JsonContent;
+            
 
             //Désérialisation JSON
 
@@ -51,20 +53,21 @@ namespace Projet_Centrale_Beton
                 lcd.WriteWaitScan();
                 Console.WriteLine("attente de scan");
                 result = controller.ReadSerialPort();
+                
 
-                if (bddConnector.CheckDriverUID(result))
+                if (bddConnector.CheckDriverUID( result))
                 {
                     lcd.WriteStateScan("Production de la commande");
                     //FirstStage();
-                    //Thread.Sleep(10000); 
+                    Thread.Sleep(10000); 
                     Console.WriteLine("Debut déplacement commande");
-                    //Thread.Sleep(10000);
+                    Thread.Sleep(10000);
                     FinishedOrder();
                 }
                 else
                 {
                     Console.WriteLine("non compatible");
-                    lcd.WriteWaitScan();
+                    //lcd.WriteWaitScan();
                 }
             }
 
@@ -110,8 +113,8 @@ namespace Projet_Centrale_Beton
         private void FinishedOrder()
         {
             lcd.WriteStateScan("Fin de la commande");
-            bddConnector.SwitchTables(result);
-            //Thread.Sleep(1000);
+            bddConnector.SwitchTables(test);
+            Thread.Sleep(1000);
             
         }
     }
