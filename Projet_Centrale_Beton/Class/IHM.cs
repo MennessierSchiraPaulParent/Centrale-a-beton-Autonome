@@ -13,13 +13,7 @@ namespace Projet_Centrale_Beton
         private static SerialPort sp;
         private readonly byte [] debutEcriture = {0xA2};
         private readonly byte [] finEcriture = {0x00};
-        private readonly byte[] clear = {0xA3, 0x01};
-        
-
-        public IHM()
-        {
-            sp = sp = new SerialPort("/dev/ttyUSB0", 19200, Parity.None, 8,StopBits.One);
-        }
+        private readonly byte [] clear = {0xA3, 0x01};
 
         public IHM(string port)
         {
@@ -29,6 +23,7 @@ namespace Projet_Centrale_Beton
         public IHM(JsonConfig config)
         {
             sp = new SerialPort(config.sp_ihm, 19200, Parity.None, 8,StopBits.Two);
+            
 
         }
 
